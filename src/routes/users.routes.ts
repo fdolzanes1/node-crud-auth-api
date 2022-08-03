@@ -13,4 +13,9 @@ usersRouter.get('/users/:uuid', (req, res, next) => {
   res.status(StatusCodes.OK).send({ "uuid": uuid});
 });
 
+usersRouter.post('/users', (req, res, next) => {
+  const newUser = req.body;
+  res.status(StatusCodes.CREATED).send(newUser);
+});
+
 export default usersRouter;
