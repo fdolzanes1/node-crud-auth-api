@@ -1,6 +1,6 @@
 import express, {Request, Response, NextFunction } from 'express';
 import usersRouter from './routes/users.routes';
-
+import statusRouter from './routes/status.routes';
 const app = express();
 
 // Configuracao da aplicacao
@@ -9,10 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configuracao de Rotas
 app.use(usersRouter);
-
-app.get('/status', (req: Request, res:Response, next: NextFunction) => {
-  res.status(200).send({ message: 'Resolution Completed' });
-});
+app.use(statusRouter);
 
 // Inicializacao da porta do Servidor
 app.listen(3000, () => {
