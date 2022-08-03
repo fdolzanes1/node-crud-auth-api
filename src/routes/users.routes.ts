@@ -18,4 +18,17 @@ usersRouter.post('/users', (req, res, next) => {
   res.status(StatusCodes.CREATED).send(newUser);
 });
 
+usersRouter.put('/users/:uuid', (req, res, next) => {
+  const uuid = req.params.uuid;
+  const modifiedUser = req.body;
+
+  modifiedUser.uuid = uuid;
+
+  res.status(StatusCodes.OK).send(modifiedUser);
+});
+
+usersRouter.delete('/users/:uuid', (req, res, next) => {
+  res.sendStatus(StatusCodes.ACCEPTED);
+});
+
 export default usersRouter;
